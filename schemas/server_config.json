@@ -3,17 +3,7 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "properties": {
-       "advanced_settings": {
-            "type": "object",
-            "properties": {
-                "transfer_buffer_size_for_parallel_transfer_in_megabytes": {"type": "integer"},
-                "maximum_size_for_single_buffer_in_megabytes": { "type": "integer"},
-                "default_number_of_transfer_threads": { "type": "integer" }
-            },
-            "required": [ "transfer_buffer_size_for_parallel_transfer_in_megabytes", "maximum_size_for_single_buffer_in_megabytes", "default_number_of_transfer_threads" ]
-        },
-
-        "catalog_provider_hosts": {
+       "catalog_provider_hosts": {
             "type": "array",
             "items": {"type": "string"},
             "minItems": 1,
@@ -92,6 +82,7 @@
             "required": ["authentication","network","resource","rule_engines"]
         },
         "schema_validation_base_uri": {"type": "string"},
+        "schema_version": { "type": "integer" },
         "server_control_plane_encryption_algorithm": {"type": "string"},
         "server_control_plane_encryption_num_hash_rounds": {"type": "integer"},
         "server_control_plane_key": {"type": "string", "minLength": 32, "maxLength": 32},
@@ -107,7 +98,7 @@
         "zone_user": {"type": "string"}
     },
     "required": [
-        "advanced_settings",
+        "schema_version",
         "catalog_provider_hosts",
         "catalog_service_role",
         "default_hash_scheme",
